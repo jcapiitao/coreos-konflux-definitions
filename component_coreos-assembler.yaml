@@ -1,0 +1,41 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component 
+metadata:
+  name: cosa
+  namespace: jcapitao-redhat-com-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}' 
+    git-provider: github 
+    git-provider-url: github.com
+spec:
+  application: fcos
+  componentName: cosa
+  source:
+    git:
+      url: https://github.com/jcapiitao/coreos-assembler.git
+      revision: konflux-experimentation 
+      context: ./ 
+      dockerfileUrl: Dockerfile
+  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/cosa
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ImageRepository 
+metadata:
+  annotations:
+    image-controller.appstudio.redhat.com/update-component-image: 'true'
+  name: imagerepository-for-fcos-cosa
+  namespace: jcapitao-redhat-com-tenant
+  labels:
+    appstudio.redhat.com/application: fcos
+    appstudio.redhat.com/component: cosa
+spec:
+  image:
+    name: jcapitao-redhat-com-tenant/cosa
+    visibility: public 
+  notifications:
+    - config:
+        url: https://bombino.api.redhat.com/v1/sbom/quay/push
+      event: repo_push
+      method: webhook
+      title: SBOM-event-to-Bombino
