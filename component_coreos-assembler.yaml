@@ -1,37 +1,37 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component 
 metadata:
-  name: cosa
-  namespace: jcapitao-redhat-com-tenant
+  name: cosa-jcapitao
+  namespace: coreos-tenant
   annotations:
     build.appstudio.openshift.io/request: configure-pac
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}' 
     git-provider: github 
     git-provider-url: github.com
 spec:
-  application: fcos
-  componentName: cosa
+  application: fcos-jcapitao
+  componentName: cosa-jcapitao
   source:
     git:
-      url: https://github.com/jcapiitao/coreos-assembler.git
-      revision: konflux-experimentation 
+      url: https://github.com/jcapiitao/cosa.git
+      revision: main
       context: ./ 
       dockerfileUrl: Dockerfile
-  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/cosa
+  containerImage: quay.io/konflux-fedora/coreos-tenant/cosa-jcapitao
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ImageRepository 
 metadata:
   annotations:
     image-controller.appstudio.redhat.com/update-component-image: 'true'
-  name: imagerepository-for-fcos-cosa
-  namespace: jcapitao-redhat-com-tenant
+  name: imagerepository-for-fcos-cosa-jcapitao
+  namespace: coreos-tenant
   labels:
-    appstudio.redhat.com/application: fcos
-    appstudio.redhat.com/component: cosa
+    appstudio.redhat.com/application: fcos-jcapitao
+    appstudio.redhat.com/component: cosa-jcapitao
 spec:
   image:
-    name: jcapitao-redhat-com-tenant/cosa
+    name: coreos-tenant/cosa-jcapitao
     visibility: public 
   notifications:
     - config:

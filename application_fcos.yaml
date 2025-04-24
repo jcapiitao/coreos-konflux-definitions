@@ -1,9 +1,9 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Application 
 metadata:
-  name: fcos
-  namespace: jcapitao-redhat-com-tenant
+  name: fcos-jcapitao
+  namespace: coreos-tenant
   annotations:
     application.thumbnail: "1"
 spec:
-  displayName: fcos
+  displayName: "FCOS jcapitao experimentation"
