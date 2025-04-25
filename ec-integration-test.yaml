@@ -1,0 +1,22 @@
+apiVersion: appstudio.redhat.com/v1beta2
+kind: IntegrationTestScenario
+metadata:
+  annotations:
+    test.appstudio.openshift.io/kind: enterprise-contract
+    test.appstudio.openshift.io/optional: "true"
+  name: cosa-jcapitao-enterprise-contract
+  namespace: coreos-tenant
+spec:
+  application: cosa-jcapitao
+  contexts:
+    - description: Application testing
+      name: application
+  resolverRef:
+    params:
+      - name: url
+        value: 'https://github.com/konflux-ci/build-definitions'
+      - name: revision
+        value: ce3bc1a6b5c39a4d632262cc9d3108bf5fbad239
+      - name: pathInRepo
+        value: pipelines/enterprise-contract.yaml
+    resolver: git
