@@ -6,5 +6,6 @@
 
 ## Deployment
 ```
-oc apply -k ./
+oc apply -k fcos-pipeline-rawhide-jcapitao-kustomization/
+oc apply -k cosa-jcapitao-kustomozation/
 ```

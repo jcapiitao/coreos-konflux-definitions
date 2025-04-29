@@ -1,0 +1,21 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: fcos-pipeline-rawhide-jcapitao
+  namespace: coreos-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}' 
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: fcos-pipeline-jcapitao
+  componentName: fcos-pipeline-rawhide-jcapitao
+  source:
+    git:
+      url: https://github.com/jcapiitao/fedora-coreos-config.git
+      revision: testing-devel
+      context: ./
+      dockerfileUrl: Dockerfile
+  containerImage: quay.io/konflux-fedora/coreos-tenant/fcos-pipeline-rawhide-jcapitao

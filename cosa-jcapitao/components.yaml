@@ -1,26 +1,16 @@
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
-kind: Application 
-metadata:
-  name: fcos-jcapitao
-  namespace: coreos-tenant
-  annotations:
-    application.thumbnail: "1"
-spec:
-  displayName: "FCOS jcapitao experimentation"
----
-apiVersion: appstudio.redhat.com/v1alpha1
-kind: Component 
+kind: Component
 metadata:
   name: cosa-jcapitao
   namespace: coreos-tenant
   annotations:
     build.appstudio.openshift.io/request: configure-pac
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}' 
-    git-provider: github 
+    git-provider: github
     git-provider-url: github.com
 spec:
-  application: fcos-jcapitao
+  application: fcos-pipeline-jcapitao
   componentName: cosa-jcapitao
   source:
     git:
