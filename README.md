@@ -6,6 +6,7 @@
 
 ## Deployment
 ```
+oc apply -k fedora-coreos-pipeline-jcapitao/
 oc apply -k fcos-pipeline-rawhide-jcapitao/
 oc apply -k cosa-jcapitao/
 ```

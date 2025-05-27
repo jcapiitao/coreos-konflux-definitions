@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - coreos-assembler-jcapitao.yaml
   - fcos-pipeline-jcapitao.yaml
+  - fedora-coreos-pipeline-jcapitao.yaml
 namespace: coreos-tenant

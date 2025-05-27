@@ -1,0 +1,20 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: tekton-task-cosa-build-jcapitao
+  namespace: coreos-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"tekton-bundle-builder-oci-ta","bundle":"latest"}' 
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: fedora-coreos-pipeline-jcapitao
+  componentName: tekton-task-cosa-build-jcapitao
+  source:
+    git:
+      url: https://github.com/jcapiitao/fedora-coreos-pipeline.git
+      revision: main
+      context: ./
+  containerImage: quay.io/konflux-fedora/coreos-tenant/tekton-task-cosa-build-jcapitao
