@@ -1,0 +1,26 @@
+---
+apiVersion: appstudio.redhat.com/v1beta2
+kind: IntegrationTestScenario
+metadata:
+  labels:
+    test.appstudio.openshift.io/optional: "false"
+  name: kola
+spec:
+  application: fcos-pipeline-jcapitao
+  contexts:
+    - description: Application testing
+      name: fcos-pipeline-jcapitao
+  params:
+    - name: JENKINS_HOST_URL
+      value: https://jenkins-fedora-coreos-pipeline.apps.ocp.stg.fedoraproject.org/
+    - name: JOB_NAME
+      value: noop
+  resolverRef:
+    params:
+      - name: url
+        value: https://github.com/jcapiitao/coreos-konflux-definitions.git
+      - name: revision
+        value: main
+      - name: pathInRepo
+        value: pipelines/jenkins.yaml
+    resolver: git

@@ -4,4 +4,5 @@ resources:
   - ../applications/
   - components.yaml
   - image-repository.yaml
+  - integrationtestscenario.yaml
 namespace: coreos-tenant
