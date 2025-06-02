@@ -1,0 +1,23 @@
+name: Schedule test on Testing Farm
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+
+# The concurrency key is used to prevent multiple workflows from running at the same time
+concurrency:
+  group: my-concurrency-group
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Schedule test on Testing Farm
+        uses: sclorg/testing-farm-as-github-action@v4
+        with:
+          api_key: ${{ secrets.TF_API_KEY }}
+          tmt_plan_regex: "smoke"
+          pull_request_status_name: "Smoke test"
