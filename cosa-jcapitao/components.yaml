@@ -37,8 +37,8 @@ spec:
     git:
       url: https://github.com/jcapiitao/cosa.git
       revision: main
-      context: ./
-      dockerfileUrl: ./tests/containers/nfs/Containerfile
+      context: ./tests/containers/nfs
+      dockerfileUrl: Containerfile
   containerImage: quay.io/konflux-fedora/coreos-tenant/kola-nfs-jcapitao
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
