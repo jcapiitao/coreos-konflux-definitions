@@ -17,4 +17,5 @@ jobs:
         with:
           api_key: ${{ secrets.TF_API_KEY }}
           tmt_plan_regex: "smoke"
+          tmt_path: "plans/konflux-ci.fmf"
           pull_request_status_name: "Smoke test"
