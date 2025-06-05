@@ -1,0 +1,84 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: coreos-assembler
+  namespace: jcapitao-redhat-com-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: coreos-assembler
+  componentName: coreos-assembler
+  source:
+    git:
+      url: https://github.com/jcapiitao/coreos-assembler.git
+      revision: konflux
+      context: ./
+      dockerfileUrl: Dockerfile
+  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/coreos-assembler
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: kola-nfs
+  namespace: jcapitao-redhat-com-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: coreos-assembler
+  componentName: kola-nfs
+  source:
+    git:
+      url: https://github.com/jcapiitao/coreos-assembler.git
+      revision: konflux
+      context: ./tests/containers/nfs
+      dockerfileUrl: Containerfile
+  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/kola-nfs
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: kola-tang
+  namespace: jcapitao-redhat-com-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: coreos-assembler
+  componentName: kola-tang
+  source:
+    git:
+      url: https://github.com/jcapiitao/coreos-assembler.git
+      revision: konflux
+      context: ./tests/containers/tang
+      dockerfileUrl: Containerfile
+  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/kola-tang
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: kola-targetcli
+  namespace: jcapitao-redhat-com-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: coreos-assembler
+  componentName: kola-targetcli
+  source:
+    git:
+      url: https://github.com/jcapiitao/coreos-assembler.git
+      revision: konflux
+      context: ./tests/containers/targetcli
+      dockerfileUrl: Containerfile
+  containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/kola-targetcli

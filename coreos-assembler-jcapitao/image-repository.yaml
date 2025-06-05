@@ -4,14 +4,14 @@ kind: ImageRepository
 metadata:
   annotations:
     image-controller.appstudio.redhat.com/update-component-image: 'true'
-  name: imagerepository-for-cosa-jcapitao
-  namespace: coreos-tenant
+  name: imagerepository-for-coreos-assembler
+  namespace: jcapitao-redhat-com-tenant
   labels:
-    appstudio.redhat.com/application: coreos-assembler-jcapitao
-    appstudio.redhat.com/component: cosa-jcapitao
+    appstudio.redhat.com/application: coreos-assembler
+    appstudio.redhat.com/component: coreos-assembler
 spec:
   image:
-    name: coreos-tenant/cosa-jcapitao
+    name: jcapitao-redhat-com-tenant/coreos-assembler
     visibility: public
   notifications:
     - config:
@@ -25,14 +25,14 @@ kind: ImageRepository
 metadata:
   annotations:
     image-controller.appstudio.redhat.com/update-component-image: 'true'
-  name: imagerepository-for-kola-nfs-jcapitao
-  namespace: coreos-tenant
+  name: imagerepository-for-kola-nfs
+  namespace: jcapitao-redhat-com-tenant
   labels:
-    appstudio.redhat.com/application: coreos-assembler-jcapitao
-    appstudio.redhat.com/component: kola-nfs-jcapitao
+    appstudio.redhat.com/application: coreos-assembler
+    appstudio.redhat.com/component: kola-nfs
 spec:
   image:
-    name: coreos-tenant/kola-nfs-jcapitao
+    name: jcapitao-redhat-com-tenant/kola-nfs
     visibility: public
   notifications:
     - config:
@@ -46,14 +46,14 @@ kind: ImageRepository
 metadata:
   annotations:
     image-controller.appstudio.redhat.com/update-component-image: 'true'
-  name: imagerepository-for-kola-tang-jcapitao
-  namespace: coreos-tenant
+  name: imagerepository-for-kola-tang
+  namespace: jcapitao-redhat-com-tenant
   labels:
-    appstudio.redhat.com/application: coreos-assembler-jcapitao
-    appstudio.redhat.com/component: kola-tang-jcapitao
+    appstudio.redhat.com/application: coreos-assembler
+    appstudio.redhat.com/component: kola-tang
 spec:
   image:
-    name: coreos-tenant/kola-tang-jcapitao
+    name: jcapitao-redhat-com-tenant/kola-tang
     visibility: public
   notifications:
     - config:
@@ -67,14 +67,14 @@ kind: ImageRepository
 metadata:
   annotations:
     image-controller.appstudio.redhat.com/update-component-image: 'true'
-  name: imagerepository-for-kola-targetcli-jcapitao
-  namespace: coreos-tenant
+  name: imagerepository-for-kola-targetcli
+  namespace: jcapitao-redhat-com-tenant
   labels:
-    appstudio.redhat.com/application: coreos-assembler-jcapitao
-    appstudio.redhat.com/component: kola-targetcli-jcapitao
+    appstudio.redhat.com/application: coreos-assembler
+    appstudio.redhat.com/component: kola-targetcli
 spec:
   image:
-    name: coreos-tenant/kola-targetcli-jcapitao
+    name: jcapitao-redhat-com-tenant/kola-targetcli
     visibility: public
   notifications:
     - config:

@@ -7,4 +7,4 @@ metadata:
   annotations:
     application.thumbnail: "1"
 spec:
-  displayName: "coreos-assembler jcapitao experimentation"
+  displayName: "coreos-assembler"
