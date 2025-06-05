@@ -1,0 +1,58 @@
+---
+apiVersion: projctl.konflux.dev/v1beta1
+kind: ProjectDevelopmentStreamTemplate
+metadata:
+  name: coreos-assembler-template
+spec:
+  project: coreos-assembler
+  variables:
+  - name: version
+    description: A version number for a new development stream
+  - name: versionName
+    description: A K8s-compliant name for the version
+    defaultValue: "{{hyphenize .version}}"
+
+  resources:
+  - apiVersion: appstudio.redhat.com/v1alpha1
+    kind: Application
+    metadata:
+      annotations:
+        application.thumbnail: "9"
+      name: "coreos-assembler-{{.versionName}}"
+    spec:
+      displayName: "coreos-assembler-{{.versionName}}"
+
+  - apiVersion: appstudio.redhat.com/v1alpha1
+    kind: Component
+    metadata:
+      annotations:
+        build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
+      name: coreos-assembler-{{.versionName}}
+    spec:
+      application: "coreos-assembler-{{.versionName}}"
+      componentName: "coreos-assembler-{{.versionName}}"
+      source:
+        git:
+          url: https://github.com/jcapiitao/coreos-assembler.git
+          revision: "{{.version}}"
+          context: ./
+          dockerfileUrl: Dockerfile
+      containerImage: quay.io/konflux-fedora/jcapitao-redhat-com-tenant/coreos-assembler
+
+  - apiVersion: appstudio.redhat.com/v1alpha1
+    kind: ImageRepository
+    metadata:
+      name: imagerepository-for-coreos-assembler-{{.versionName}}
+      labels:
+        appstudio.redhat.com/application: coreos-assembler-{{.versionName}}
+        appstudio.redhat.com/component: coreos-assembler-{{.versionName}}
+    spec:
+      image:
+        name: jcapitao-redhat-com-tenant/coreos-assembler-{{.versionName}}
+        visibility: public
+      notifications:
+        - config:
+            url: 'https://bombino.preprod.api.redhat.com/v1/sbom/quay/push'
+          event: repo_push
+          method: webhook
+          title: SBOM-event-to-Bombino

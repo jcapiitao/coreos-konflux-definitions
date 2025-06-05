@@ -3,5 +3,8 @@ kind: Kustomization
 resources:
   - application.yaml
   - components.yaml
+  - devstream.yaml
   - image-repository.yaml
+  - project.yaml
+  - template.yaml
 namespace: jcapitao-redhat-com-tenant

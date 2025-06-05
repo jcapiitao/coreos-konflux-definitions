@@ -1,0 +1,12 @@
+---
+apiVersion: projctl.konflux.dev/v1beta1
+kind: ProjectDevelopmentStream
+metadata:
+  name: coreos-assembler-rhcos-4.19
+spec:
+  project: coreos-assembler
+  template:
+    name: coreos-assembler-template
+    values:
+    - name: version
+      value: "rhcos-4.19"
