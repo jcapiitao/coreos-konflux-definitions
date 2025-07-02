@@ -4,4 +4,4 @@ resources:
   - application.yaml
   - components.yaml
   - image-repository.yaml
-namespace: jcapitao-redhat-com-tenant
+namespace: coreos-tenant
