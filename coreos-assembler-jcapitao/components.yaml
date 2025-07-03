@@ -3,7 +3,7 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
   name: coreos-assembler-jcapitao
-  namespace: coreos-tenant
+  namespace: jcapitao-redhat-com-tenant
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
     git-provider: github
@@ -17,13 +17,13 @@ spec:
       revision: konflux
       context: ./
       dockerfileUrl: Dockerfile
-  containerImage: quay.io/redhat-user-workloads/coreos-tenant/coreos-assembler-jcapitao
+  containerImage: quay.io/konflux-fedora/coreos-tenant/coreos-assembler-jcapitao
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
   name: kola-nfs-jcapitao
-  namespace: coreos-tenant
+  namespace: jcapitao-redhat-com-tenant
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
     git-provider: github
@@ -37,13 +37,13 @@ spec:
       revision: konflux
       context: ./tests/containers/nfs
       dockerfileUrl: Containerfile
-  containerImage: quay.io/redhat-user-workloads/coreos-tenant/kola-nfs-jcapitao
+  containerImage: quay.io/konflux-fedora/coreos-tenant/kola-nfs-jcapitao
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
   name: kola-tang-jcapitao
-  namespace: coreos-tenant
+  namespace: jcapitao-redhat-com-tenant
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
     git-provider: github
@@ -57,13 +57,13 @@ spec:
       revision: konflux
       context: ./tests/containers/tang
       dockerfileUrl: Containerfile
-  containerImage: quay.io/redhat-user-workloads/coreos-tenant/kola-tang-jcapitao
+  containerImage: quay.io/konflux-fedora/coreos-tenant/kola-tang-jcapitao
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
   name: kola-targetcli-jcapitao
-  namespace: coreos-tenant
+  namespace: jcapitao-redhat-com-tenant
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build-multi-platform-oci-ta","bundle":"latest"}'
     git-provider: github
@@ -77,4 +77,4 @@ spec:
       revision: konflux
       context: ./tests/containers/targetcli
       dockerfileUrl: Containerfile
-  containerImage: quay.io/redhat-user-workloads/coreos-tenant/kola-targetcli-jcapitao
+  containerImage: quay.io/konflux-fedora/coreos-tenant/kola-targetcli-jcapitao
