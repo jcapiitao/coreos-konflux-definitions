@@ -1,0 +1,21 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: test-renovate2
+  namespace: coreos-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: test-renovate2
+  componentName: test-renovate2
+  source:
+    git:
+      url: https://github.com/jcapiitao/test-renovate2.git
+      revision: main
+      context: ./
+      dockerfileUrl: Dockerfile
+  containerImage: quay.io/redhat-user-workloads/coreos-tenant/test-renovate2
