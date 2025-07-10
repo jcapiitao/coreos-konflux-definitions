@@ -1,0 +1,20 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ImageRepository
+metadata:
+  annotations:
+    image-controller.appstudio.redhat.com/update-component-image: 'true'
+  name: imagerepository-for-fcos-testing-devel-jcapitao
+  labels:
+    appstudio.redhat.com/application: fedora-coreos-config-testing-devel-jcapitao
+    appstudio.redhat.com/component: fcos-testing-devel-jcapitao
+spec:
+  image:
+    name: coreos-tenant/fcos-testing-devel-jcapitao
+    visibility: public
+  notifications:
+    - config:
+        url: https://bombino.api.redhat.com/v1/sbom/quay/push
+      event: repo_push
+      method: webhook
+      title: SBOM-event-to-Bombino

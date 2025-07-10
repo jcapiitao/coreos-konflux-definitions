@@ -1,0 +1,18 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: fcos-testing-devel-jcapitao
+  annotations:
+    build.appstudio.openshift.io/pipeline: '{"name":"buildah-build-bootc-multi-platform-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: github.com
+spec:
+  application: fedora-coreos-config-testing-devel-jcapitao
+  componentName: fcos-testing-devel-jcapitao
+  source:
+    git:
+      url: https://github.com/jcapiitao/fedora-coreos-config.git
+      revision: testing-devel
+      context: ./
+  containerImage: quay.io/konflux-fedora/coreos-tenant/fcos-testing-devel-jcapitao
